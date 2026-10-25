@@ -3507,14 +3507,7 @@ ul {
     border-radius: 18px;
   }
   .artisan-badge-seal {
-    top: -10px;
-    right: -5px;
-    width: 78px;
-    height: 78px;
-    box-shadow: 0 6px 16px rgba(255, 90, 54, 0.35);
-  }
-  .seal-center-icon {
-    font-size: 1.15rem;
+    display: none !important;
   }
   .floating-pill-1 {
     bottom: 0.75rem;
@@ -3609,22 +3602,32 @@ ul {
   }
   .flavour-desc {
     font-size: 0.88rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.45;
   }
   .serving-selector {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3px;
     padding: 3px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
+    border-radius: 8px;
   }
   .serving-chip {
     font-size: 0.72rem;
     padding: 0.45rem 0.15rem;
     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .card-action-row {
     gap: 0.5rem;
+    padding-top: 0.75rem;
   }
   .price-amount {
     font-size: 1.35rem;
@@ -3672,6 +3675,15 @@ ul {
   }
   .box-slot span {
     font-size: 0.72rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    line-height: 1.25;
+    max-width: 100%;
+    word-break: break-word;
   }
   .box-actions-row {
     flex-direction: column;
@@ -3867,16 +3879,124 @@ ul {
   /* Modals Mobile */
   .flavour-modal {
     width: 95%;
-    max-height: 90vh;
+    max-height: 88vh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     border-radius: 20px;
   }
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-img-wrap {
+    height: 190px;
+    min-height: 190px;
+  }
   .modal-info-pane {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem 1.25rem;
   }
   .modal-title {
-    font-size: 1.55rem;
+    font-size: 1.45rem;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
   }
+  .modal-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+  }
+  .profile-meters {
+    margin-bottom: 0.85rem;
+  }
+  .meter-row {
+    font-size: 0.78rem;
+    margin-bottom: 0.35rem;
+  }
+  .ingredients-box {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.45;
+  }
+  .flavour-modal .card-action-row {
+    position: sticky;
+    bottom: 0;
+    background: #FFFFFF;
+    padding: 0.75rem 0 0.25rem;
+    border-top: 1px solid var(--color-border);
+    z-index: 5;
+  }
+
+  /* Cart Drawer Mobile - Fluid Full Scroll */
+  .cart-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+  .cart-filled-view {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cart-items-scroll {
+    flex: none;
+    overflow-y: visible;
+    padding: 1rem;
+    max-height: none;
+  }
+  .cart-item-card {
+    padding: 0.75rem;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+  }
+  .cart-item-img {
+    width: 50px;
+    height: 50px;
+  }
+  .cart-item-title {
+    font-size: 0.92rem;
+  }
+  .cart-summary-box {
+    padding: 1rem 1.15rem 2.5rem;
+    position: static;
+  }
+  .order-type-picker {
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+  .checkout-input-group {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .cart-input {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  .cart-totals-breakdown {
+    margin-bottom: 0.75rem;
+  }
+  .totals-row {
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+  }
+  .total-grand {
+    font-size: 1.15rem;
+    padding-top: 0.4rem;
+    margin-top: 0.4rem;
+  }
+  #checkoutWhatsappBtn {
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  /* Gifting Ribbon Tag Mobile */
+  .gift-ribbon-tag {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+
   .rewards-modal-box {
     padding: 2rem 1.25rem;
     border-radius: 22px;
@@ -3945,9 +4065,34 @@ ul {
   .serving-chip {
     font-size: 0.68rem;
     padding: 0.35rem 0.1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .card-action-row {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .price-amount {
+    font-size: 1.25rem;
+  }
+  .btn-add-cart {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
   }
   .cart-trigger-btn {
     padding: 0.4rem 0.65rem;
+  }
+  .map-overlay-card {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .map-overlay-card .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 }
 
@@ -3961,5 +4106,10 @@ ul {
   }
   .serving-chip {
     font-size: 0.62rem;
+    padding: 0.3rem 0.05rem;
+  }
+  .btn-add-cart {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.74rem;
   }
 }

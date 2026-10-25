@@ -536,23 +536,23 @@ function renderFlavourGrid(category = 'all') {
 
           <!-- Serving Size Selector -->
           <div class="serving-selector" data-flavour-id="${f.id}">
-            <button type="button" class="serving-chip ${activeSize === 'scoop' ? 'active' : ''}" onclick="selectServingSize('${f.id}', 'scoop')">
+            <button type="button" class="serving-chip ${activeSize === 'scoop' ? 'active' : ''}" data-size="scoop" onclick="selectServingSize('${f.id}', 'scoop')">
               Scoop
             </button>
-            <button type="button" class="serving-chip ${activeSize === 'double' ? 'active' : ''}" onclick="selectServingSize('${f.id}', 'double')">
+            <button type="button" class="serving-chip ${activeSize === 'double' ? 'active' : ''}" data-size="double" onclick="selectServingSize('${f.id}', 'double')">
               Double
             </button>
-            <button type="button" class="serving-chip ${activeSize === 'pint' ? 'active' : ''}" onclick="selectServingSize('${f.id}', 'pint')">
-              Pint 500ml
+            <button type="button" class="serving-chip ${activeSize === 'pint' ? 'active' : ''}" data-size="pint" onclick="selectServingSize('${f.id}', 'pint')">
+              Pint
             </button>
-            <button type="button" class="serving-chip ${activeSize === 'tub' ? 'active' : ''}" onclick="selectServingSize('${f.id}', 'tub')">
+            <button type="button" class="serving-chip ${activeSize === 'tub' ? 'active' : ''}" data-size="tub" onclick="selectServingSize('${f.id}', 'tub')">
               1L Tub
             </button>
           </div>
 
           <div class="card-action-row">
             <div class="price-display">
-              <span class="price-label">Price (${currentLabel})</span>
+              <span class="price-label" id="price-label-${f.id}">Price (${currentLabel})</span>
               <span class="price-amount" id="price-${f.id}">₹${currentPrice}</span>
             </div>
 
@@ -587,13 +587,18 @@ function selectServingSize(flavourId, sizeKey) {
   if (selector) {
     const chips = selector.querySelectorAll('.serving-chip');
     chips.forEach(c => c.classList.remove('active'));
-    const clickedChip = Array.from(chips).find(c => c.textContent.trim().toLowerCase().includes(sizeKey));
+    const clickedChip = selector.querySelector(`.serving-chip[data-size="${sizeKey}"]`);
     if (clickedChip) clickedChip.classList.add('active');
   }
 
   const priceEl = document.getElementById(`price-${flavourId}`);
   if (priceEl) {
     priceEl.textContent = `₹${f.servings[sizeKey].price}`;
+  }
+
+  const labelEl = document.getElementById(`price-label-${flavourId}`);
+  if (labelEl) {
+    labelEl.textContent = `Price (${f.servings[sizeKey].label})`;
   }
 }
 
