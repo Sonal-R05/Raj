@@ -462,15 +462,26 @@ function selectSearchResult(flavourId) {
 
 function initRewardsModal() {
   const openBtn = document.getElementById('openRewardsBtn');
+  const mobileLink = document.getElementById('mobileRewardsLink');
   const closeBtn = document.getElementById('closeRewardsBtn');
   const backdrop = document.getElementById('rewardsBackdrop');
 
-  if (openBtn && backdrop) {
-    openBtn.addEventListener('click', () => {
+  const openRewards = (e) => {
+    if (e) e.preventDefault();
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('mobileDrawerOverlay');
+    if (drawer && overlay) {
+      drawer.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+    if (backdrop) {
       backdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
-    });
-  }
+    }
+  };
+
+  if (openBtn) openBtn.addEventListener('click', openRewards);
+  if (mobileLink) mobileLink.addEventListener('click', openRewards);
 
   if (closeBtn && backdrop) {
     closeBtn.addEventListener('click', () => {
