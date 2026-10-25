@@ -1,0 +1,16 @@
+{
+  "name": "raj-icecream",
+  "version": "1.0.0",
+  "description": "Artisan Ice Creams & Splendid Scoops - Bhuj",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "ice-cream",
+    "artisan",
+    "bhuj",
+    "raj-icecream"
+  ],
+  "author": "Raj Icecream",
+  "license": "ISC"
+}
